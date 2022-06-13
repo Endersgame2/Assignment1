@@ -7,28 +7,28 @@
 // if got time I will work on quantity of dollars.
 
 
-// Simple Prompt
-Console.WriteLine("How much money you want to enter");
-int inputMoney = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine("How much you want to buy");
-int purchase = Convert.ToInt32(Console.ReadLine());
+//// Simple Prompt
+//Console.WriteLine("How much money you want to enter");
+//int inputMoney = Convert.ToInt32(Console.ReadLine());
+//Console.WriteLine("How much you want to buy");
+//int purchase = Convert.ToInt32(Console.ReadLine());
 
 
-// algrorith
-int[] change = { 20, 10, 5, 2, 1 };
-int result = Convert.ToInt32(inputMoney - purchase);
-int count;
-Console.WriteLine("The user entered $" + inputMoney + " and wants to buy a $" + purchase + "");
+//// algrorith
+//int[] change = { 20, 10, 5, 2, 1 };
+//int result = Convert.ToInt32(inputMoney - purchase);
+//int count;
+//Console.WriteLine("The user entered $" + inputMoney + " and wants to buy a $" + purchase + "");
 
-for (int i = 0; i < change.Length; i++)
-{
-    count = result / change[i];
-    if (result!= 0)
-    {
-        result %= change[i];
-        Console.WriteLine(change[i]+": piece "+ count);
-    }
-}
+//for (int i = 0; i < change.Length; i++)
+//{
+//    count = result / change[i];
+//    if (result!= 0)
+//    {
+//        result %= change[i];
+//        Console.WriteLine(change[i]+": piece "+ count);
+//    }
+//}
 
 
 
@@ -37,26 +37,31 @@ for (int i = 0; i < change.Length; i++)
 //*****************************************************************************************************
 
 
-//Console.WriteLine("Please Enter a String in Upper Case");
-//string input = Console.ReadLine();
-//char[] arr= input.ToCharArray();
+// the major part to tackle in this question is maintaining cont and resting it back to 1 
+// here this code is simply storing the count as current is the curren one which moves forward and compares the previous one if the count is more than 3 it will print
+// if it founds an another char it will reset the count to 1 and if its only 1 it will just print it out.
 
-//var dict = new Dictionary<char, int>();
-//foreach (char c in arr)
-//{
-//    if (dict.ContainsKey(c))
-//    dict[c]++;
-//    else
-//        dict[c]=1;
-//}
-//foreach (var c in dict)
-//{
-//    Console.WriteLine(c);
-//}
+Console.WriteLine("Please Enter a String in Upper Case");
+string str = Console.ReadLine();
+char[] input = str.ToCharArray();
+int count = 1;
 
-// Just need to get this c Condition 
-// if(c > 2)
-//{
-//    // int count should be replaced by charac escept 1 index of it.
-// 1 index should be simply appended with the count
-//}
+for (int i = 0; i < str.Length; i++)
+{
+    char current = input(i);
+    char previous = input(i-1);
+
+    if (current == previous)
+    {
+        count++;
+    }
+    else
+    {
+        if (count > 2)
+        {
+            input += count;
+            count = 1;
+        }
+        input+=current;
+    }
+}

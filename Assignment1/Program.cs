@@ -8,27 +8,27 @@
 
 
 //// Simple Prompt
-//Console.WriteLine("How much money you want to enter");
-//int inputMoney = Convert.ToInt32(Console.ReadLine());
-//Console.WriteLine("How much you want to buy");
-//int purchase = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("How much money you want to enter");
+int inputMoney = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("How much you want to buy");
+int purchase = Convert.ToInt32(Console.ReadLine());
 
 
-//// algrorith
-//int[] change = { 20, 10, 5, 2, 1 };
-//int result = Convert.ToInt32(inputMoney - purchase);
-//int count;
-//Console.WriteLine("The user entered $" + inputMoney + " and wants to buy a $" + purchase + "");
+// algrorith
+int[] change = { 20, 10, 5, 2, 1 };
+int result = Convert.ToInt32(inputMoney - purchase);
+int count;
+Console.WriteLine("The user entered $" + inputMoney + " and wants to buy a $" + purchase + "");
 
-//for (int i = 0; i < change.Length; i++)
-//{
-//    count = result / change[i];
-//    if (result!= 0)
-//    {
-//        result %= change[i];
-//        Console.WriteLine(change[i]+": piece "+ count);
-//    }
-//}
+for (int i = 0; i < change.Length; i++)
+{
+    count = result / change[i];
+    if (result != 0)
+    {
+        result %= change[i];
+        Console.WriteLine(change[i] + ": piece " + count);
+    }
+}
 
 
 
@@ -41,15 +41,18 @@
 // here this code is simply storing the count as current is the curren one which moves forward and compares the previous one if the count is more than 3 it will print
 // if it founds an another char it will reset the count to 1 and if its only 1 it will just print it out.
 
+using System.Text;
+
 Console.WriteLine("Please Enter a String in Upper Case");
 string str = Console.ReadLine();
-char[] input = str.ToCharArray();
+char[] input = str.ToCharArray(0, 0);
+StringBuilder sb = new StringBuilder();
 int count = 1;
 
 for (int i = 0; i < str.Length; i++)
 {
-    char current = input(i);
-    char previous = input(i-1);
+    char current = input[0];
+    char previous = input[i-1];
 
     if (current == previous)
     {
@@ -59,9 +62,9 @@ for (int i = 0; i < str.Length; i++)
     {
         if (count > 2)
         {
-            input += count;
+            sb.Append(count);
             count = 1;
         }
-        input+=current;
+        sb.Append(current);
     }
 }

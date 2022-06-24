@@ -8,68 +8,98 @@
 
 
 //// Simple Prompt
-Console.WriteLine("How much money you want to enter");
-int inputMoney = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine("How much you want to buy");
-int purchase = Convert.ToInt32(Console.ReadLine());
+///
+
+//Console.WriteLine("How much money you want to enter");
+//int inputMoney = Convert.ToInt32(Console.ReadLine());
+//Console.WriteLine("How much you want to buy");
+//int purchase = Convert.ToInt32(Console.ReadLine());
 
 
-// algrorith
-int[] change = { 20, 10, 5, 2, 1 };
-int result = Convert.ToInt32(inputMoney - purchase);
-int count;
-Console.WriteLine("The user entered $" + inputMoney + " and wants to buy a $" + purchase + "");
+//// algrorith
 
-for (int i = 0; i < change.Length; i++)
-{
-    count = result / change[i];
-    if (result != 0)
-    {
-        result %= change[i];
-        Console.WriteLine(change[i] + ": piece " + count);
-    }
-}
+//int[] change = { 20, 10, 5, 2, 1 };
+//int result = Convert.ToInt32(inputMoney - purchase);
+//int count;
+//Console.WriteLine("The user entered $" + inputMoney + " and wants to buy a $" + purchase + "");
 
+//for (int i = 0; i < change.Length; i++)
+//{
+//    count = result / change[i];
+//    if (result != 0)
+//    {
+//        result %= change[i];
+//        Console.WriteLine(change[i] + ": piece " + count);
+//    }
+//}
+//Console.WriteLine("************************************");
 
 
 //*****************************************************************************************************
 // Question 2
 //*****************************************************************************************************
 
-
-// the major part to tackle in this question is maintaining cont and resting it back to 1 
-// here this code is simply storing the count as current is the curren one which moves forward and compares the previous one if the count is more than 3 it will print
-// if it founds an another char it will reset the count to 1 and if its only 1 it will just print it out.
+// Compress
 
 
+static string compress(string data)
+{
+    string answer = "";
+    int counter = 1;
+    for (int i = 0; i < data.Length; i++)
+    {
+        //algo if i = i+1 to keep track of counter
+        if (i + 1 < data.Length && data[i] == data[i + 1])
+        {
+            counter++;
+        }
+    else
+    {
+        if (counter > 1)
+        {
+            answer += data[i] + counter.ToString();
+            }
+            else
+            {
+                answer+=data[i];
+            }counter = 1;
+    }
+    }return answer;
+}
 
-// Please Uncomment the code there is a out of range Error
+Console.WriteLine("************************************");
+Console.WriteLine("************************************");
+Console.WriteLine("Here is your compress");
+Console.WriteLine(compress("RTFFFFYYUPPPEEEUU"));
 
 
-//using System.Text;
+// decompress
 
-//Console.WriteLine("Please Enter a String in Upper Case");
-//string str = Console.ReadLine();
-//char[] input = str.ToCharArray(0, 0);
-//StringBuilder sb = new StringBuilder();
-//int count = 1;
+static string decompress(string data)
+{
+    string answer = "";
+    for (int i = 0; i < data.Length; i++)
+    {   
+        //algo if number is next char
+        if (i + 1 < data.Length && char.IsDigit(data[i+1]))
+        {
+            int counter = int.Parse(data[i+1].ToString());
+            for (int j = 0; j < counter; j++)
+            {
+                answer += data[i];
+            }
+            i++;
+        }
+        else
+        {
+            answer += data[i];
+        }
 
-//for (int i = 0; i < str.Length; i++)
-//{
-//    char current = input[0];
-//    char previous = input[i-1];
+    }
+    return answer;
+}
 
-//    if (current == previous)
-//    {
-//        count++;
-//    }
-//    else
-//    {
-//        if (count > 2)
-//        {
-//            sb.Append(count);
-//            count = 1;
-//        }
-//        sb.Append(current);
-//    }
-//}
+Console.WriteLine("************************************");
+Console.WriteLine("************************************");
+Console.WriteLine("Here is your decompress");
+Console.WriteLine(decompress("RTF4YYUP3E3UU"));

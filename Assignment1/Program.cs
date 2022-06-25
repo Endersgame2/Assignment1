@@ -10,29 +10,29 @@
 //// Simple Prompt
 ///
 
-//Console.WriteLine("How much money you want to enter");
-//int inputMoney = Convert.ToInt32(Console.ReadLine());
-//Console.WriteLine("How much you want to buy");
-//int purchase = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("How much money you want to enter");
+int inputMoney = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("How much you want to buy");
+int purchase = Convert.ToInt32(Console.ReadLine());
 
 
-//// algrorith
+// algrorith
 
-//int[] change = { 20, 10, 5, 2, 1 };
-//int result = Convert.ToInt32(inputMoney - purchase);
-//int count;
-//Console.WriteLine("The user entered $" + inputMoney + " and wants to buy a $" + purchase + "");
+int[] change = { 20, 10, 5, 2, 1 };
+int result = Convert.ToInt32(inputMoney - purchase);
+int count;
+Console.WriteLine("The user entered $" + inputMoney + " and wants to buy a $" + purchase + "");
 
-//for (int i = 0; i < change.Length; i++)
-//{
-//    count = result / change[i];
-//    if (result != 0)
-//    {
-//        result %= change[i];
-//        Console.WriteLine(change[i] + ": piece " + count);
-//    }
-//}
-//Console.WriteLine("************************************");
+for (int i = 0; i < change.Length; i++)
+{
+    count = result / change[i];
+    if (result != 0)
+    {
+        result %= change[i];
+        Console.WriteLine(change[i] + ": piece " + count);
+    }
+}
+
 
 
 //*****************************************************************************************************
@@ -79,8 +79,9 @@ static string decompress(string data)
 {
     string answer = "";
     for (int i = 0; i < data.Length; i++)
-    {   
+    {
         //algo if number is next char
+        // idDigit from "https://docs.microsoft.com/en-us/dotnet/api/system.char.isdigit?view=net-6.0"
         if (i + 1 < data.Length && char.IsDigit(data[i+1]))
         {
             int counter = int.Parse(data[i+1].ToString());
